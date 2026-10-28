@@ -162,7 +162,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         
         # We'll just apply to all loaded coordinators for now or pass 'device_id'.
         # Let's assume the user has one device for now or we iterate.
-        device_id = await _get_entry_id_by_mac(hass, call.data.get("device_id"))
+        device_id = await _get_entry_id_by_mac(hass, call.data.get("mac_address"))
         for entry_id, coordinator in hass.data[DOMAIN].items():
             if device_id and entry_id != device_id:
                 continue
@@ -312,7 +312,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         face_config = {key: design[key] for key in ("layers", "screen_size", "trigger_entity") if key in design}
         
         # Apply to all coordinators (similar logic to set_face)
-        device_id = await _get_entry_id_by_mac(hass, call.data.get("device_id"))
+        device_id = await _get_entry_id_by_mac(hass, call.data.get("mac_address"))
         for entry_id, coordinator in hass.data[DOMAIN].items():
             if device_id and entry_id != device_id:
                 continue
@@ -322,7 +322,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     hass.services.async_register(DOMAIN, "set_saved_design", async_set_saved_design)
 
     async def async_show_color(call):
-        device_id = await _get_entry_id_by_mac(hass, call.data.get("device_id"))
+        device_id = await _get_entry_id_by_mac(hass, call.data.get("mac_address"))
         for entry_id, coordinator in hass.data[DOMAIN].items():
             if device_id and entry_id != device_id:
                 continue
@@ -332,7 +332,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     hass.services.async_register(DOMAIN, "show_color", async_show_color, schema=service_schema("show_color"))
 
     async def async_disconnect(call):
-        device_id = await _get_entry_id_by_mac(hass, call.data.get("device_id"))
+        device_id = await _get_entry_id_by_mac(hass, call.data.get("mac_address"))
         for entry_id, coordinator in hass.data[DOMAIN].items():
             if device_id and entry_id != device_id:
                 continue
@@ -340,7 +340,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
                 await coordinator.async_disconnect_device()
 
     async def async_reconnect(call):
-        device_id = await _get_entry_id_by_mac(hass, call.data.get("device_id"))
+        device_id = await _get_entry_id_by_mac(hass, call.data.get("mac_address"))
         for entry_id, coordinator in hass.data[DOMAIN].items():
             if device_id and entry_id != device_id:
                 continue
@@ -361,7 +361,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
             return
 
         # Apply to all coordinators
-        device_id = await _get_entry_id_by_mac(hass, call.data.get("device_id"))
+        device_id = await _get_entry_id_by_mac(hass, call.data.get("mac_address"))
         for entry_id, coordinator in hass.data[DOMAIN].items():
             if device_id and entry_id != device_id:
                 continue
@@ -376,7 +376,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     # Register stop_gif_rotation service
     async def async_stop_gif_rotation(call):
         """Handle the stop_gif_rotation service call."""
-        device_id = await _get_entry_id_by_mac(hass, call.data.get("device_id"))
+        device_id = await _get_entry_id_by_mac(hass, call.data.get("mac_address"))
         for entry_id, coordinator in hass.data[DOMAIN].items():
             if device_id and entry_id != device_id:
                 continue
@@ -409,7 +409,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
             )
             return
 
-        device_id = await _get_entry_id_by_mac(hass, call.data.get("device_id"))
+        device_id = await _get_entry_id_by_mac(hass, call.data.get("mac_address"))
         for entry_id, coordinator in hass.data[DOMAIN].items():
             if device_id and entry_id != device_id:
                 continue
@@ -430,7 +430,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     # Register stop_weather service
     async def async_stop_weather(call):
         """Handle the stop_weather service call."""
-        device_id = await _get_entry_id_by_mac(hass, call.data.get("device_id"))
+        device_id = await _get_entry_id_by_mac(hass, call.data.get("mac_address"))
         for entry_id, coordinator in hass.data[DOMAIN].items():
             if device_id and entry_id != device_id:
                 continue
@@ -450,7 +450,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         }
         follow = call.data.get("follow", True)
 
-        device_id = await _get_entry_id_by_mac(hass, call.data.get("device_id"))
+        device_id = await _get_entry_id_by_mac(hass, call.data.get("mac_address"))
         for entry_id, coordinator in hass.data[DOMAIN].items():
             if device_id and entry_id != device_id:
                 continue
@@ -471,7 +471,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     # Register stop_bitcoin service
     async def async_stop_bitcoin(call):
         """Handle the stop_bitcoin service call."""
-        device_id = await _get_entry_id_by_mac(hass, call.data.get("device_id"))
+        device_id = await _get_entry_id_by_mac(hass, call.data.get("mac_address"))
         for entry_id, coordinator in hass.data[DOMAIN].items():
             if device_id and entry_id != device_id:
                 continue
@@ -489,7 +489,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         }
         follow = call.data.get("follow", True)
 
-        device_id = await _get_entry_id_by_mac(hass, call.data.get("device_id"))
+        device_id = await _get_entry_id_by_mac(hass, call.data.get("mac_address"))
         for entry_id, coordinator in hass.data[DOMAIN].items():
             if device_id and entry_id != device_id:
                 continue
@@ -510,7 +510,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     # Register stop_co2 service
     async def async_stop_co2(call):
         """Handle the stop_co2 service call."""
-        device_id = await _get_entry_id_by_mac(hass, call.data.get("device_id"))
+        device_id = await _get_entry_id_by_mac(hass, call.data.get("mac_address"))
         for entry_id, coordinator in hass.data[DOMAIN].items():
             if device_id and entry_id != device_id:
                 continue
@@ -530,7 +530,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         }
         follow = call.data.get("follow", True)
 
-        device_id = await _get_entry_id_by_mac(hass, call.data.get("device_id"))
+        device_id = await _get_entry_id_by_mac(hass, call.data.get("mac_address"))
         for entry_id, coordinator in hass.data[DOMAIN].items():
             if device_id and entry_id != device_id:
                 continue
@@ -551,7 +551,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     # Register stop_power service
     async def async_stop_power(call):
         """Handle the stop_power service call."""
-        device_id = await _get_entry_id_by_mac(hass, call.data.get("device_id"))
+        device_id = await _get_entry_id_by_mac(hass, call.data.get("mac_address"))
         for entry_id, coordinator in hass.data[DOMAIN].items():
             if device_id and entry_id != device_id:
                 continue
@@ -570,7 +570,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         }
         follow = call.data.get("follow", True)
 
-        device_id = await _get_entry_id_by_mac(hass, call.data.get("device_id"))
+        device_id = await _get_entry_id_by_mac(hass, call.data.get("mac_address"))
         for entry_id, coordinator in hass.data[DOMAIN].items():
             if device_id and entry_id != device_id:
                 continue
@@ -593,7 +593,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     # Register stop_thermostat service
     async def async_stop_thermostat(call):
         """Handle the stop_thermostat service call."""
-        device_id = await _get_entry_id_by_mac(hass, call.data.get("device_id"))
+        device_id = await _get_entry_id_by_mac(hass, call.data.get("mac_address"))
         for entry_id, coordinator in hass.data[DOMAIN].items():
             if device_id and entry_id != device_id:
                 continue
@@ -613,7 +613,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         }
         follow = call.data.get("follow", True)
 
-        device_id = await _get_entry_id_by_mac(hass, call.data.get("device_id"))
+        device_id = await _get_entry_id_by_mac(hass, call.data.get("mac_address"))
         for entry_id, coordinator in hass.data[DOMAIN].items():
             if device_id and entry_id != device_id:
                 continue
@@ -634,7 +634,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     # Register stop_sun service
     async def async_stop_sun(call):
         """Handle the stop_sun service call."""
-        device_id = await _get_entry_id_by_mac(hass, call.data.get("device_id"))
+        device_id = await _get_entry_id_by_mac(hass, call.data.get("mac_address"))
         for entry_id, coordinator in hass.data[DOMAIN].items():
             if device_id and entry_id != device_id:
                 continue
@@ -649,7 +649,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         cfg = {"pixel_size": call.data.get("pixel_size")}
         follow = call.data.get("follow", True)
 
-        device_id = await _get_entry_id_by_mac(hass, call.data.get("device_id"))
+        device_id = await _get_entry_id_by_mac(hass, call.data.get("mac_address"))
         for entry_id, coordinator in hass.data[DOMAIN].items():
             if device_id and entry_id != device_id:
                 continue
@@ -670,7 +670,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     # Register stop_moon service
     async def async_stop_moon(call):
         """Handle the stop_moon service call."""
-        device_id = await _get_entry_id_by_mac(hass, call.data.get("device_id"))
+        device_id = await _get_entry_id_by_mac(hass, call.data.get("mac_address"))
         for entry_id, coordinator in hass.data[DOMAIN].items():
             if device_id and entry_id != device_id:
                 continue
@@ -696,7 +696,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
             _LOGGER.error("show_message service requires 'message'")
             return
 
-        device_id = await _get_entry_id_by_mac(hass, call.data.get("device_id"))
+        device_id = await _get_entry_id_by_mac(hass, call.data.get("mac_address"))
         for entry_id, coordinator in hass.data[DOMAIN].items():
             if device_id and entry_id != device_id:
                 continue
@@ -710,7 +710,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     # Register stop_message service
     async def async_stop_message(call):
         """Handle the stop_message service call: end early and restore."""
-        device_id = await _get_entry_id_by_mac(hass, call.data.get("device_id"))
+        device_id = await _get_entry_id_by_mac(hass, call.data.get("mac_address"))
         for entry_id, coordinator in hass.data[DOMAIN].items():
             if device_id and entry_id != device_id:
                 continue
@@ -731,7 +731,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         }
         follow = call.data.get("follow", True)
 
-        device_id = await _get_entry_id_by_mac(hass, call.data.get("device_id"))
+        device_id = await _get_entry_id_by_mac(hass, call.data.get("mac_address"))
         for entry_id, coordinator in hass.data[DOMAIN].items():
             if device_id and entry_id != device_id:
                 continue
@@ -752,7 +752,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     # Register stop_clock service
     async def async_stop_clock(call):
         """Handle the stop_clock service call."""
-        device_id = await _get_entry_id_by_mac(hass, call.data.get("device_id"))
+        device_id = await _get_entry_id_by_mac(hass, call.data.get("mac_address"))
         for entry_id, coordinator in hass.data[DOMAIN].items():
             if device_id and entry_id != device_id:
                 continue
