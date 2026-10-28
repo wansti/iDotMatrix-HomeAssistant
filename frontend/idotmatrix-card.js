@@ -449,6 +449,7 @@ export class IDotMatrixCard extends LitElement {
           selector: { select: { options: Object.keys(MODES) } },
         },
         { name: "display_options", selector: { object: {} } },
+        { name: "mac_address", selector: { text: { placeholder: "AA:BB:CC:DD:EE:FF" } } },
       ],
       computeLabel: (s) =>
         ({
@@ -459,11 +460,12 @@ export class IDotMatrixCard extends LitElement {
           gif_path: "Default GIF path",
           default_mode: "Default display mode",
           display_options: "Display defaults (by mode)",
+          mac_address: "Panel MAC address",
         })[s.name] || s.name,
     };
   }
   static getStubConfig() {
-    return { title: "iDotMatrix", screen_size: 32, default_view: "designer" };
+    return { title: "iDotMatrix", screen_size: 32, default_view: "designer", mac_address: "AA:BB:CC:DD:EE:FF" };
   }
   connectedCallback() {
     super.connectedCallback();
@@ -621,7 +623,7 @@ export class IDotMatrixCard extends LitElement {
       throw new Error(
         `The ${service} action is unavailable. Update or enable the iDotMatrix integration.`,
       );
-    return this.hass.callService("idotmatrix", service, data);
+    return this.hass.callService("idotmatrix", service, {data, mac_address: this.config.mac_address});
   }
   async _run(label, action, success) {
     if (this._busy) return false;
