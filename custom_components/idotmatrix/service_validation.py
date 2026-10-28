@@ -28,7 +28,8 @@ def service_schema(name):
     for key in ("weather", "condition", "temperature", "humidity", "wind", "high", "low", "price", "change", "co2", "power", "heat", "cool"):
         fields[vol.Optional(f"{key}_entity")] = cv.entity_id
     if name == "show_color":
-        return vol.Schema({vol.Required("color"): fields[vol.Optional("color")]})
+        return vol.Schema({vol.Required("color"): fields[vol.Optional("color")],
+                           vol.Optional("device_id"): str})
     if name == "display_gif":
         return vol.Schema({
             vol.Required("path"): vol.All(cv.string, vol.Length(min=1)),
