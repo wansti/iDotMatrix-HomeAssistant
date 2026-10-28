@@ -27,6 +27,7 @@ _CARD_RESOURCE_URL = f"{_CARD_URL_PATH}/{_CARD_FILENAME}"
 
 async def _get_entry_id_by_mac(hass: HomeAssistant, mac_address: str) -> str | None:
     """Find entry_id for a given MAC address."""
+    from .coordinator import IDotMatrixCoordinator
     for entry_id, coordinator in hass.data[DOMAIN].items():
         if isinstance(coordinator, IDotMatrixCoordinator):
             if coordinator.connection_manager.address.lower() == mac_address.lower():
