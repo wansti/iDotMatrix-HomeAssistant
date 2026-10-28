@@ -573,6 +573,8 @@ show_color:
       example: [255, 0, 0]
       selector:
         color_rgb:
+    device_id:
+      required: true
 
 disconnect:
   name: Disconnect panel
