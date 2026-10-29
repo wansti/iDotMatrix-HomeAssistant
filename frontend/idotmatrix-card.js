@@ -623,7 +623,7 @@ export class IDotMatrixCard extends LitElement {
       throw new Error(
         `The ${service} action is unavailable. Update or enable the iDotMatrix integration.`,
       );
-    return this.hass.callService("idotmatrix", service, {data, mac_address: this.config.mac_address});
+    return this.hass.callService("idotmatrix", service, {...data, mac_address: this.config.mac_address});
   }
   async _run(label, action, success) {
     if (this._busy) return false;
