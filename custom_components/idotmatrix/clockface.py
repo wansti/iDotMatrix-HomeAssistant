@@ -118,20 +118,20 @@ def _layout_small(data: ClockFaceData, accent: tuple,
             dayw = _text_width(day_txt)
             date_txt = f"{_MONTHS[data.month - 1]} {data.day}"
             dw = _text_width(date_txt)
-            _draw_text(d, (size - dayw) // 2, 14, day_txt, LABEL_COLOR)
-            _draw_text(d, (size - dw) // 2, 23, date_txt, LABEL_COLOR)
+            _draw_text(d, (size - dayw) // 2, 14, day_txt, accent)
+            _draw_text(d, (size - dw) // 2, 23, date_txt, accent)
         else:
             _draw_time(d, size, 5, data, colon_on, scale=1)
             day_txt = f"{_WEEKDAYS[data.weekday]}"
             dayw = _text_width(day_txt)
-            _draw_text(d, (size - dayw) // 2, 18, day_txt, LABEL_COLOR)
+            _draw_text(d, (size - dayw) // 2, 18, day_txt, accent)
     else:
         _draw_time(d, size, 5, data, colon_on, scale=1)
 
         if data.show_date:
             date_txt = f"{_MONTHS[data.month - 1]} {data.day}"
             dw = _text_width(date_txt)
-            _draw_text(d, (size - dw) // 2, 18, date_txt, LABEL_COLOR)
+            _draw_text(d, (size - dw) // 2, 18, date_txt, accent)
 
     return img
 
