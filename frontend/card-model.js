@@ -177,6 +177,7 @@ export function displayPayload(mode, values, size) {
       face: values.face ?? "pixel",
       hour24: values.hour24 ?? true,
       show_date: values.show_date ?? true,
+      show_dow: values.show_dow ?? false,
       ...(values.color ? { color: hexToRgb(values.color) } : {}),
     });
   if (mode === "sun") data.hour24 = values.hour24 ?? true;

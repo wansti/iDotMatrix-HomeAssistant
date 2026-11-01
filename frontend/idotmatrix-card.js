@@ -1081,7 +1081,7 @@ export class IDotMatrixCard extends LitElement {
               </div>
             </details>`
           : nothing
-      }${["clock", "sun"].includes(this._mode) ? this._check("24-hour time", values.hour24 ?? true, (v) => this._setValue("hour24", v)) : nothing}${this._mode === "clock" ? this._check("Show date", values.show_date ?? true, (v) => this._setValue("show_date", v)) : nothing}${this._mode !== "color" ? this._check("Keep automatically updated", values.follow ?? true, (v) => this._setValue("follow", v)) : nothing}
+      }${["clock", "sun"].includes(this._mode) ? this._check("24-hour time", values.hour24 ?? true, (v) => this._setValue("hour24", v)) : nothing}${this._mode === "clock" ? this._check("Show date", values.show_date ?? true, (v) => this._setValue("show_date", v)) : nothing}${this._mode === "clock" ? this._check("Show DOW on small face", values.show_dow ?? false, (v) => this._setValue("show_dow", v)) : nothing}${this._mode !== "color" ? this._check("Keep automatically updated", values.follow ?? true, (v) => this._setValue("follow", v)) : nothing}
       <div class="actions">
         <button
           type="submit"

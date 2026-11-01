@@ -2386,6 +2386,7 @@ class IDotMatrixCoordinator(DataUpdateCoordinator):
                 day=now.day,
                 hour24=cfg.get("hour24", True),
                 show_date=cfg.get("show_date", True),
+                show_dow=cfg.get("show_dow", False),
             )
             signature = data.signature()
             if not force and signature == self._clock_signature:
