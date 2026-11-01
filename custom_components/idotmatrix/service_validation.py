@@ -20,6 +20,7 @@ def service_schema(name):
         vol.Optional("follow"): cv.boolean,
         vol.Optional("hour24"): cv.boolean,
         vol.Optional("show_date"): cv.boolean,
+        vol.Optional("show_dow"): cv.boolean,
         vol.Optional("rainbow"): cv.boolean,
         vol.Optional("color"): vol.All(
             list, vol.Length(min=3, max=3), [vol.All(vol.Coerce(int), vol.Range(min=0, max=255))]
