@@ -44,7 +44,7 @@ class ClockFaceData:
     day: int
     hour24: bool = True
     show_date: bool = True
-    show_dow: bool = False
+    show_dow: bool = True
 
     def signature(self) -> tuple:
         return (self.hour, self.minute, self.day)

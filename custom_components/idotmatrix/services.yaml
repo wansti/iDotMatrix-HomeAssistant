@@ -598,6 +598,12 @@ show_clock:
       default: true
       selector:
         boolean:
+    show_dow:
+      required: false
+      description: Show the day of week on the small face (always shows on the large one)
+      default: true
+      selector:
+        boolean:
     pixel_size:
       required: false
       description: Display resolution for the pixel face. 64 renders the full layout, 32 a compact one.
