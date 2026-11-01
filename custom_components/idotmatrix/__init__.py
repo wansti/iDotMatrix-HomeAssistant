@@ -682,6 +682,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
             "color": call.data.get("color"),
             "hour24": call.data.get("hour24", True),
             "show_date": call.data.get("show_date", True),
+            "show_dow": call.data.get("show_dow", True),
             "pixel_size": call.data.get("pixel_size"),
         }
         follow = call.data.get("follow", True)
